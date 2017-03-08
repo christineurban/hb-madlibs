@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}GAME!{% endblock %} 
+
+{% block content %}
+
+<h1>GAME TIME</h1>
+<h2>Madlibs :)</h2>
+
+<form action="/madlib">
+  Type a name: <input type="text" name="person"><br>
+  Choose a color: 
+      <input type="radio" name="color" value="red">Red
+      <input type="radio" name="color" value="orange">Orange
+      <input type="radio" name="color" value="yellow">Yellow
+      <input type="radio" name="color" value="green">Green
+      <input type="radio" name="color" value="blue">Blue
+      <input type="radio" name="color" value="indigo">Indigo
+      <input type="radio" name="color" value="violet">Violet
+    <br>
+  Type a noun: <input type="text" name="noun"><br>
+  Type a plural noun: <input type="text" name="plural"><br>
+  Type a adjective: <input type="text" name="adjective"><br>
+  <input type="submit">
+</form>
+
+{% endblock %}
