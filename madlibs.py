@@ -52,10 +52,7 @@ def show_madlib_form():
 
 
 
-
 MADLIB = [ "madlib.html", "madlib2.html"]
-
-madlib_py = choice(MADLIB)
 
 
 @app.route('/madlib')
@@ -68,29 +65,15 @@ def show_madlib():
     adjective_py = request.args.get("adjective")
     plural_py = request.args.get("plural")
 
-    return render_template("madlib.html",
+    madlib_py = choice(MADLIB)
+
+    return render_template(madlib_py,
                            person=person_py,
                            color=color_py,
                            noun=noun_py,
                            adjective=adjective_py,
                            plural=plural_py)
 
-@app.route('/madlib2')
-def show_madlib2():
-    """Madlib result."""
-
-    person_py = request.args.get("person")
-    color_py = request.args.get("color")
-    noun_py = request.args.get("noun")
-    adjective_py = request.args.get("adjective")
-    plural_py = request.args.get("plural")
-
-    return render_template("madlib2.html",
-                           person=person_py,
-                           color=color_py,
-                           noun=noun_py,
-                           adjective=adjective_py,
-                           plural=plural_py)
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads" our web app
