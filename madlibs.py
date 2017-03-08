@@ -1,6 +1,8 @@
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
+
+
 
 
 # "__name__" is a special Python variable for the name of the current module
@@ -32,11 +34,11 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    compliments = sample(AWESOMENESS, 3)
 
     return render_template("compliment.html",
                            person=player,
-                           compliment=compliment)
+                           compliments=compliments)
 
 
 @app.route('/game')
@@ -60,16 +62,21 @@ def show_madlib():
     """Madlib result."""
 
     person_py = request.args.get("person")
-    color_py = request.args.get("color")
+    color_py = request.args.getlist("color")
     noun_py = request.args.get("noun")
     adjective_py = request.args.get("adjective")
     plural_py = request.args.get("plural")
+
+    color_string = ""
+
+    for color in color_py:
+      color_string += color + " "
 
     madlib_py = choice(MADLIB)
 
     return render_template(madlib_py,
                            person=person_py,
-                           color=color_py,
+                           color=color_string,
                            noun=noun_py,
                            adjective=adjective_py,
                            plural=plural_py)

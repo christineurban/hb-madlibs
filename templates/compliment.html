@@ -3,7 +3,13 @@
 {% block title %}A Compliment{% endblock %} 
 
 {% block content %}
-    <h2>Hi {{ person }}! I think you're {{ compliment }}!</h2>
+    <h2>Hi {{ person }}! I think you're:
+        <ul>
+            {% for compliment in compliments %}
+                <li>{{ compliment }}!</li>
+            {% endfor %}
+        </ul>
+    </h2>
 
     <form action="/game">
         Would you like to play a game?<br>
